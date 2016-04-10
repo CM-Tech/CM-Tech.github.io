@@ -1,0 +1,87 @@
+<html>
+
+    <head>
+        <!--JQuery 2.2.2 Wont work on IE 8 or below-->
+        <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+        <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
+
+        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/CopyShader.js"></script>
+        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/HorizontalBlurShader.js"></script>
+        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/VerticalBlurShader.js"></script>
+
+        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/EffectComposer.js"></script>
+        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/RenderPass.js"></script>
+        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/MaskPass.js"></script>
+        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/ShaderPass.js"></script>
+
+        <script src="http://jeromeetienne.github.io/threex.windowresize/threex.windowresize.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="top-bar">
+                <div class="nav">
+                    <img src="MCTechLogo.png" class="MC-logo">
+                    <div class="MC-title">CM-Tech</div>
+                </div>
+                <div class="nav right">
+                    <div class="MC-nav-menu">Projects</div>
+                    <div class="MC-nav-menu">About</div>
+                    <div class="MC-nav-menu selected">Home</div>
+                </div>
+            </div>
+            <div class="hello">
+                 <h3 style="text-align:center">Welcome To CM-Tech</h3>
+                <br>
+                <p>CM-Tech is a team of coders working together to create cool programs. You can find most of them in the project section.</p>
+            </div>
+            <div class="who">
+                 <h3 style="text-align:center">The Team Members</h3>
+                 <h5 style="text-align:center" class="who-title">(Hover To Extend)</h5>
+                <div class="people-column" open="none">
+                    <div class="person a">
+                        <div class="person-small">
+                            <table>
+                                <tr>
+                                    <td class="person-extended">
+                                        <h4 style="text-align:center">About ModderMe123</h4>
+                                    </td>
+                                    <td class="person-normal">
+
+                                         <h3 style="text-align:center">ModderMe123</h3>
+                                        <img class="person-avatar" src="http://modderme123.github.io/img/profile.jpg">
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="person b" onmouseenter="">
+                        <div class="person-small">
+                            <table>
+                                <tr>
+
+                                    <td class="person-normal">
+
+                                         <h3 style="text-align:center">Coler706</h3>
+                                        <img class="person-avatar" src="http://coler706.github.io/files/avatar.svg">
+
+                                    </td>
+                                    <td class="person-extended">
+                                        <h4 style="text-align:center">About Coler706</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <script src="background.js"></script>
+        <script src="main.js"></script>
+    </body>
+
+</html>
