@@ -1,87 +1,75 @@
 <html>
 
-    <head>
-        <!--JQuery 2.2.2 Wont work on IE 8 or below-->
-        <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-        <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/CopyShader.js"></script>
-        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/HorizontalBlurShader.js"></script>
-        <script src="http://mrdoob.github.com/three.js/examples/js/shaders/VerticalBlurShader.js"></script>
-
-        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/EffectComposer.js"></script>
-        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/RenderPass.js"></script>
-        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/MaskPass.js"></script>
-        <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/ShaderPass.js"></script>
-
-        <script src="http://jeromeetienne.github.io/threex.windowresize/threex.windowresize.js"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-
-    <body>
-        <div class="container">
-            <div class="top-bar">
-                <div class="nav">
-                    <img src="MCTechLogo.png" class="MC-logo">
-                    <div class="MC-title">CM-Tech</div>
-                </div>
-                <div class="nav right">
-                    <div class="MC-nav-menu">Projects</div>
-                    <div class="MC-nav-menu">About</div>
-                    <div class="MC-nav-menu selected">Home</div>
-                </div>
+<body>
+  <div class="container">
+    <div id="left" class="left slot" onmouseenter="hoverLeft()" style="text-align:center" ontouchstart="document.getElementById('left').classList.remove('more')">
+      <h3 style="text-align:center">Who We Are</h3>
+      <p>Hi CM-Tech is run by 2 friends who like coding working together on projects.</p>
+      <div class="m123" style="width:150px">
+        <p>ModderMe123</p>
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="background:inherit;">
+          <div class="flipper" style="height:150px;width:150px">
+            <div class="front">
+              <img class="person-avatar" src="http://modderme123.github.io/img/profile.svg">
             </div>
-            <div class="hello">
-                 <h3 style="text-align:center">Welcome To CM-Tech</h3>
-                <br>
-                <p>CM-Tech is a team of coders working together to create cool programs. You can find most of them in the project section.</p>
+            <div class="back">
+              <p>Web Developer, Javascript Ninja, CSS Wizard, and Web Lover. ModderMe123 comes up with ideas and works with Coler706 to create them</p>
             </div>
-            <div class="who">
-                 <h3 style="text-align:center">The Team Members</h3>
-                 <h5 style="text-align:center" class="who-title">(Hover To Extend)</h5>
-                <div class="people-column" open="none">
-                    <div class="person a">
-                        <div class="person-small">
-                            <table>
-                                <tr>
-                                    <td class="person-extended">
-                                        <h4 style="text-align:center">About ModderMe123</h4>
-                                    </td>
-                                    <td class="person-normal">
-
-                                         <h3 style="text-align:center">ModderMe123</h3>
-                                        <img class="person-avatar" src="http://modderme123.github.io/img/profile.jpg">
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="person b" onmouseenter="">
-                        <div class="person-small">
-                            <table>
-                                <tr>
-
-                                    <td class="person-normal">
-
-                                         <h3 style="text-align:center">Coler706</h3>
-                                        <img class="person-avatar" src="http://coler706.github.io/files/avatar.svg">
-
-                                    </td>
-                                    <td class="person-extended">
-                                        <h4 style="text-align:center">About Coler706</h4>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+          </div>
         </div>
-        <script src="background.js"></script>
-        <script src="main.js"></script>
-    </body>
+      </div>
+      <div class="c706" style="width:150px">
+        <p>Coler706</p>
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="background:inherit;">
+          <div class="flipper" style="height:150px;width:150px">
+            <div class="front">
+              <img class="person-avatar cole" src="http://coler706.github.io/files/avatar.svg">
+            </div>
+            <div class="back">
+              <p>Web Developer, Javascript Ninja, CSS Wizard, and Web Lover. Coler706 likes mathematical and simulation based programs alot, but also likes making games.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="credits" style="background:inherit;text-align:center;bottom:15px">
+        <button onclick="document.getElementById('left').classList.toggle('more')">members that were added later</button>
+      </div>
+      <div id="more" class="more-members" onmouseleave="document.getElementById('left').classList.toggle('more')">
+        <div class="tripp" style="width:150px;z-index: 200;">
+          <p>Tripp Lyons</p>
+          <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="background:inherit;">
+            <div class="flipper" style="height:150px;width:150px">
+              <div class="front">
+                <img class="person-avatar" src="https://avatars3.githubusercontent.com/u/14354551?v=3&s=400">
+              </div>
+              <div class="back">
+                <p>A Guy named Tripp Lyons</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="right" class="right slot" onmouseenter="hoverRight()">
+      <h3 style="text-align:center">Projects</h3>
+      <div class="projects" style="text-align:center"></div>
+    </div>
+    <div id="center" class="center slot" onmouseenter="closeBoth()">
+      <img src="MCTechLogo.png" class="CM-logo">
+      <div class="hello">
+        <h3 style="text-align:center">Welcome To CM-Tech</h3>
+        <p>CM-Tech is a team of coders working together to create cool programs. You can find most of them in the project section.</p>
+      </div>
+      <div class="credits">Random Credits</div>
+    </div>
+  </div>
+  <script src="main.js">
+  </script>
+</body>
 
 </html>
