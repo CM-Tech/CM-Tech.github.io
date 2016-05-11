@@ -6,7 +6,7 @@
 <body>
 <p>If you are not directed click <a href="github.com/cm-tech">here</a></p>
 <script>
-var m = window.location.href.splice("/");
+var m = window.location.href.split("/");
 var l = m[m.length-1];
 window.location.href = "github.com/cm-tech/"+l;
 </script>
