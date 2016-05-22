@@ -77,7 +77,7 @@ function closeBoth() {
 
 function getRepos() {
 	var req = new XMLHttpRequest();
-	req.open('GET', 'https://api.github.com/users/cm-tech/repos', false);
+	req.open('GET', 'https://api.github.com/users/cm-tech/repos?per_page=1000', false);
 	req.send(null);
 	var repos = eval(req.responseText);
 	repos.forEach(function(e) {
