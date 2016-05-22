@@ -169,7 +169,10 @@ html {
   left: calc(50% - 250px);
   background: #FFFFFF;
 }
-.CM-logo {}
+.CM-logo {
+  width: 150px;
+  height: 150px;
+}
 .credits {
   position: absolute;
   bottom: 5px;
