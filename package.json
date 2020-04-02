@@ -1,0 +1,21 @@
+{
+    "name": "CM-Tech.github.io",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "parcel index.html",
+        "build": "parcel build index.html"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "parcel": "^1.12.4",
+        "sass": "^1.26.3"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "bulma": "^0.8.1"
+    }
+}
