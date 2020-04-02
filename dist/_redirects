@@ -1,8 +1,7 @@
-https://cm-tech.netlify.com//* https://cm-tech.github.io/:splat 200!
-http://cm-tech.netlify.com/* http://cm-tech.github.io/:splat 200!
-https://www.cm-tech.netlify.com/* https://cm-tech.github.io/:splat 200!
-http://www.cm-tech.netlify.com/* http://cm-tech.github.io/:splat 200!
-
+https://cm-tech.netlify.com https://cm-ht.ml 301!
+https://cm-tech.netlify.com/* https://cm-ht.ml/:splat 301!
+http://cm-tech.netlify.com http://cm-ht.ml 301!
+http://cm-tech.netlify.com/* http://cm-ht.ml/:splat 301!
 https://cm-ht.ml/* https://cm-tech.github.io/:splat 200!
 http://cm-ht.ml/* http://cm-tech.github.io/:splat 200!
 https://www.cm-ht.ml/* https://cm-tech.github.io/:splat 200!
