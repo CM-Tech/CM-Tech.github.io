@@ -1,8 +1,8 @@
 https://www.cm-ht.ml/ https://cm-tech.netlify.com/ 200
 http://www.cm-ht.ml/ http://cm-tech.netlify.com/ 200
-https://www.cm-ht.ml/ https://cm-tech.netlify.com/ 200
-http://www.cm-ht.ml/ http://cm-tech.netlify.com/ 200
-https://cm-ht.ml/*/ https://cm-tech.github.io/:splat 200
-http://cm-ht.ml/*/ http://cm-tech.github.io/:splat 200
+https://cm-ht.ml/ https://cm-tech.netlify.com/ 200
+http://cm-ht.ml/ http://cm-tech.netlify.com/ 200
+https://www.cm-ht.ml/*/ https://cm-tech.github.io/:splat 200
+http://www.cm-ht.ml/*/ http://cm-tech.github.io/:splat 200
 https://cm-ht.ml/*/ https://cm-tech.github.io/:splat 200
 http://cm-ht.ml/*/ http://cm-tech.github.io/:splat 200
