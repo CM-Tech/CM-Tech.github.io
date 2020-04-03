@@ -43,7 +43,11 @@ function getRepos() {
         <img class="project-thumb" src="https://raw.githubusercontent.com/CM-Tech/${e.name.toLowerCase()}/master/README.png" onerror="this.style.display='none';this.parentElement.classList.add('no-image')"/>
           
             <figcaption>
-                <h1 class="title is-size-5 is-size-4-widescreen">${e.name}</h1><a class="button is-warning is-outlined is-rounded" href="${"http://cm-tech.github.io/" + e.name}" target="_blank"><span>Visit Website</span><span class="icon"><i class="fas fa-angle-right"></i><!-- <i class="fas fa-angle-right"></i> --></span></a>
+                <h1 class="title is-size-5 is-size-4-widescreen">${e.name}</h1>
+                
+                
+                
+                <a class="button is-warning is-outlined is-rounded" href="${e.has_pages?"http://cm-tech.github.io/" + e.name:e.html_url}" target="_blank"><span>Visit ${e.has_pages?"Website":"Repo"}</span><span class="icon"><i class="fas fa-angle-right"></i><!-- <i class="fas fa-angle-right"></i> --></span></a>
             </figcaption>
             <div class="overlay"></div>
         </figure>
