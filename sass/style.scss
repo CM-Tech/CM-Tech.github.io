@@ -284,6 +284,7 @@ h2 {
     overflow: hidden;
     border-radius: 6px;
     img.project-thumb {
+        background: transparent;
         -webkit-transform: scale(1);
         transform: scale(1);
         -webkit-transition: .25s ease-in-out;
@@ -313,7 +314,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 0;
     -webkit-transition: .45s ease-in-out;
     transition: .45s ease-in-out;
 }
@@ -324,7 +325,9 @@ h2 {
 }
 
 .projects .project-grid figure:hover .overlay,
-.projects .project-grid figure:hover figcaption {
+.projects .project-grid figure:hover figcaption,
+.projects .project-grid figure.no-image .overlay,
+.projects .project-grid figure.no-image figcaption {
     opacity: 1;
 }
 
