@@ -182,48 +182,13 @@ h2 {
 	border: 1px solid $red-color;
 }
 
-.section.top-section {
-	margin-top: 3em;
-	.spacer {
-		height: 0px;
-	}
+.spacer {
+	height: 0px;
 	&.sticky {
-		.spacer {
-			height: 52px;
-		}
+		height: 52px;
 	}
 }
 
-// .section.skill-section {
-//     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-//     border: 0px solid #fff1e7;
-//     background: #fff1e7;
-//     color: white;
-//     display: flex;
-//     padding: 6px;
-//     margin: 3em auto 0em auto;
-//     max-width: 1000px;
-//     width: calc( 100% - 40px);
-//     box-sizing: border-box;
-//     h1 {
-//         font-family: "Arcon";
-//         font-size: 2em;
-//         font-weight: bold;
-//         margin: 0.5em;
-//         line-height: 1;
-//     }
-//     .skill-column {
-//         background: $red-color;
-//         margin: 6px;
-//         flex: 1;
-//         text-align: center;
-//         padding: 12px;
-//         box-sizing: border-box;
-//         p {
-//             text-align: justify;
-//         }
-//     }
-// }
 .section.skills {
 	width: 100%;
 	.box {

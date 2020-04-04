@@ -8,7 +8,7 @@ window.onscroll = navStick;
 
 // Get the header
 var header = document.getElementById("navbar");
-var topSection = document.getElementById("top");
+var topSection = document.querySelector(".spacer");
 
 // Get the offset position of the navbar
 var gg = -6;
@@ -16,10 +16,11 @@ var sticky = header.offsetTop;
 console.log(sticky);
 window.onresize = navStick;
 navStick();
+
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function navStick() {
-	gg = (window.innerWidth >= 1024 ? -20 : 0) + 40;
-	if (window.pageYOffset > sticky - gg) {
+	gg = (window.innerWidth >= 1024 ? -20 : 0) + window.innerHeight;
+	if (window.pageYOffset > sticky + gg) {
 		header.classList.add("sticky");
 
 		topSection.classList.add("sticky");
