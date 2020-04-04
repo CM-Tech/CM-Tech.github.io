@@ -158,7 +158,7 @@ export const update = (config) => {
 		framebuffer: density.write,
 		x: density.read,
 		dissipation: config.DENSITY_DISSIPATION,
-		color: [0, 0, 0, 1],
+		color: [0.1, 0.1, 0.1, 1],
 	});
 	density.swap();
 

@@ -8,6 +8,8 @@ uniform sampler2D image;
 
 void main(void) {
   vec2 pos = vec2(coords.x - 0.5, 0.5 - coords.y) * ratio * 2.0 + vec2(0.5, 0.5);
-  vec4 base2 = texture2D(image, pos);
-  gl_FragColor = texture2D(density, coords) + base2 * 0.01;
+  vec4 logo = texture2D(image, pos);
+  float ler = logo.w;
+  vec4 newColor=texture2D(density, coords)*(1.0-ler)+ logo * ler;
+  gl_FragColor = newColor;
 }

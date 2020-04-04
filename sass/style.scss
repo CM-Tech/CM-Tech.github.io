@@ -7,7 +7,7 @@
 $family-sans-serif: "Work Sans";
 // $red:#ff4e21;
 $yellow: #ffc621;
-$text-strong: #ffffff;
+$text-strong: #000000;
 $text: #bebebe;
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
@@ -22,6 +22,7 @@ html {
 	top: 0;
 	left: 0;
 	z-index: -1000;
+	background:white;
 }
 .fc {
 	height: 1em;
@@ -32,7 +33,7 @@ html {
 	font-size: 8vw;
 	line-height: 1;
 	font-family: "Arcon";
-	color: white;
+	color: black;
 }
 
 .skill-icon {
@@ -106,73 +107,6 @@ h2 {
 	transition: box-shadow 1s;
 }
 
-.navbar {
-	font-family: "Arcon";
-	font-size: 1em;
-	font-weight: bold;
-	color: white;
-	display: flex;
-	width: calc(100% + 2.5rem);
-	background: transparent;
-	margin-left: -1.25rem;
-	margin-right: -1.25rem;
-	padding: 0rem 0 !important;
-	&.sticky {
-		margin-top: 0px;
-		margin-bottom: 0px;
-		position: fixed;
-		margin-left: 0;
-		margin-right: 0;
-		width: 100%;
-		left: 0;
-		right: 0;
-		top: 40px;
-		.container {
-			padding: 1.125rem 1.25rem !important;
-			max-width: calc(900px);
-			background-color: mix($black, transparent);
-			backdrop-filter: blur(10px);
-			@include desktop {
-				border-radius: 6px;
-			}
-			box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-			color: inherit;
-			display: block;
-		}
-	}
-}
-
-.navbar-item {
-	display: inline-block;
-	flex: 1;
-	margin-bottom: 0;
-	text-align: left;
-	text-transform: uppercase;
-	color: white;
-	font-family: "Arcon";
-	font-size: 1rem;
-	font-weight: bold;
-	padding: 0 !important;
-	line-height: 1rem;
-	height: 1rem;
-	@include tablet {
-		font-size: 1rem;
-	}
-}
-
-.nav-logo {
-	height: 3.25rem;
-	margin-top: -1.125rem;
-	max-height: 3.25rem !important;
-}
-
-.navbar-item.nav-center {
-	text-align: center;
-}
-
-.navbar-item.nav-right {
-	text-align: right;
-}
 
 .dash-hr {
 	width: 40px;

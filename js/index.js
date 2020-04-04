@@ -3,34 +3,6 @@ import { regl } from "./canvas";
 import * as config from "./config";
 import { fullscreen, update, display, drawLogo, createSplat } from "./shaders";
 
-// Get the header
-const header = document.getElementById("navbar");
-const topSection = document.querySelector(".spacer");
-
-// Get the offset position of the navbar
-let gg = -6;
-let sticky = header.offsetTop;
-
-// Update whether the nav is stuck
-window.onresize = navStick;
-window.onscroll = navStick;
-navStick();
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function navStick() {
-	gg = (window.innerWidth >= 1024 ? -20 : 0) + window.innerHeight;
-	if (window.pageYOffset > sticky + gg) {
-		header.classList.add("sticky");
-
-		topSection.classList.add("sticky");
-	} else {
-		if (!header.classList.contains("sticky")) {
-			sticky = header.offsetTop;
-		}
-		header.classList.remove("sticky");
-		topSection.classList.remove("sticky");
-	}
-}
 
 function getRepos() {
 	var req = new XMLHttpRequest();
@@ -61,11 +33,11 @@ function getRepos() {
 		document.getElementById("project-grid-columns").appendChild(a);
 	});
 }
-getRepos();
+// getRepos();
 
 regl.frame(() => {
 	fullscreen(() => {
-		if (window.scrollY < window.innerHeight / 2) drawLogo(1.0 - config.DENSITY_DISSIPATION);
+		drawLogo(1.0 - config.DENSITY_DISSIPATION);
 		if (pointer.moved) {
 			createSplat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color, config.SPLAT_RADIUS);
 			pointer.moved = false;
@@ -81,7 +53,7 @@ let pointer = {
 	dx: 0,
 	dy: 0,
 	moved: false,
-	color: [0.5, 0.66, 1],
+	color: [Math.random() * 0.2, Math.random() * 0.2, Math.random() * 0.2],
 };
 document.addEventListener("mousemove", (e) => {
 	pointer.moved = true;
@@ -91,5 +63,5 @@ document.addEventListener("mousemove", (e) => {
 	pointer.y = e.clientY;
 });
 document.addEventListener("mousedown", () => {
-	pointer.color = [Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2];
+	pointer.color = [Math.random() * 0.2, Math.random() * 0.2, Math.random() * 0.2];
 });
