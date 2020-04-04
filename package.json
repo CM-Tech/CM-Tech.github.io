@@ -5,17 +5,20 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel index.html",
-        "build": "parcel build index.html"
+        "build": "parcel build index.html",
+        "fmt": "prettier --write {js,sass}/* --print-width 150"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "parcel": "^1.12.4",
+        "prettier": "^2.0.2",
         "sass": "^1.26.3"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
-        "bulma": "^0.8.1"
+        "bulma": "^0.8.1",
+        "regl": "^1.4.2"
     }
 }
