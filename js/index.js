@@ -3,18 +3,17 @@ import { regl } from "./canvas";
 import * as config from "./config";
 import { fullscreen, update, display, drawLogo, createSplat } from "./shaders";
 
-// When the user scrolls the page, execute myFunction
-window.onscroll = navStick;
-
 // Get the header
-var header = document.getElementById("navbar");
-var topSection = document.querySelector(".spacer");
+const header = document.getElementById("navbar");
+const topSection = document.querySelector(".spacer");
 
 // Get the offset position of the navbar
-var gg = -6;
-var sticky = header.offsetTop;
-console.log(sticky);
+let gg = -6;
+let sticky = header.offsetTop;
+
+// Update whether the nav is stuck
 window.onresize = navStick;
+window.onscroll = navStick;
 navStick();
 
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
