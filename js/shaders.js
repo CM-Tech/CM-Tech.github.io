@@ -272,6 +272,9 @@ const jacobi = regl({
 	},
 	viewport,
 });
+export const getBreakpoint=(id)=>
+	document.getElementById(id)?(document.getElementById(id).getBoundingClientRect().top+window.scrollY)/window.innerHeight:1;
+
 export const display = regl({
 	frag: displayShader,
 	uniforms: {
@@ -280,6 +283,9 @@ export const display = regl({
 		scroll: () => window.scrollY / window.innerHeight,
 		page: () => page_tex,
 		logo: () => logo_tex,
+		breakpoint1: () => getBreakpoint("breakpoint1"),
+		breakpoint2: () =>getBreakpoint("breakpoint2"),
+		breakpoint3: () =>getBreakpoint("breakpoint3"),
 		texelSize,
 	},
 });

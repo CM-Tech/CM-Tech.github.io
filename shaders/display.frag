@@ -8,6 +8,10 @@ uniform sampler2D page;
 uniform sampler2D logo;
 uniform vec2 texelSize;
 uniform float scroll;
+uniform float breakpoint1;
+uniform float breakpoint2;
+
+uniform float breakpoint3;
 
 float colorDistance(vec3 a,vec3 b){
     return length(a-b);
@@ -99,6 +103,16 @@ vec3 getColorAt(vec2 uv){
     vec2 proj=(uv/texelSize-0.1*texture2D(velocity, uv).xy*1.0)+vec2(0,-scroll)/texelSize;
     vec3 bk=vec3(1.0);
     vec2 pageCoord=(uv-0.1*texture2D(velocity, uv).xy*texelSize.xy);
+
+    if(1.0-pageCoord.y+scroll>breakpoint1){
+        bk=rgb(255, 200, 67);
+    }
+    if(1.0-pageCoord.y+scroll>breakpoint2){
+        bk=rgb(246, 85, 75);//(218, 24, 0);
+    }
+     if(1.0-pageCoord.y+scroll>breakpoint3){
+        bk=vec3(1.0);
+    }
     vec4 pgt=texture2D(page, vec2(0.0,1.0)+pageCoord*vec2(1.0,-1.0)).xyzw;
     vec2 lpos = vec2(pageCoord.x - 0.5, 0.5 - pageCoord.y+scroll+0.275) /texelSize.xy*texelSize.y * 3.0 + vec2(0.5, 0.5);
     vec4 pgt2=texture2D(logo,lpos).xyzw;
@@ -106,6 +120,9 @@ vec3 getColorAt(vec2 uv){
     pgt.xyz=vec3(1.0,1.0,1.0)*(pgt.xyz-vec3(0.5))+vec3(0.5);
     bk=bk*(1.0-pgt.w)+pgt.w*pgt.xyz;
     vec3 blendedColor=bk*(1.0*max(0.0,1.0-alpha)+color*alpha);
+    if(length(color.xyz)>pow(2.0,0.5)){
+        blendedColor=bk*(1.0*max(0.0,1.0-alpha))+(color*alpha);
+    }
     vec3 bestColorMatch=vec3(243.0/255.0);
     addToPalette(211, 68, 176);
     addToPalette(7, 179, 227);
@@ -116,7 +133,7 @@ vec3 getColorAt(vec2 uv){
     addToPalette(255, 200, 67);
     addToPalette(15, 51, 163);
     addToPalette(12,12,12);
-    addToPalette(218, 24, 0);
+    // addToPalette(218, 24, 0);
     addToPalette(0, 140, 60);
     
     return mix(bestColorMatch,vec3(1.0),0.0);

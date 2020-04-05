@@ -1,7 +1,7 @@
 import "zenscroll";
 import { regl } from "./canvas";
 import * as config from "./config";
-import { fullscreen, update, display, drawLogo, createSplat } from "./shaders";
+import { fullscreen, update, display, drawLogo, createSplat,getBreakpoint } from "./shaders";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -53,14 +53,30 @@ let pointer = {
 	dy: 0,
 	color: [1,1,0],
 };
+function getMColor(pos){
+var vvy=window.scrollY+pos.y;
+
+if(vvy<window.innerHeight*getBreakpoint("breakpoint1")){
+	return [1,1,0];
+}
+if(vvy<window.innerHeight*getBreakpoint("breakpoint2")){
+	return [1,1,1];
+}
+if(vvy<window.innerHeight*getBreakpoint("breakpoint3")){
+	return [1,1,1];
+}
+return [1,0,0];
+}
 document.addEventListener("mousemove", (e) => {
 	pointer.dx = (e.clientX - pointer.x) * 10;
 	pointer.dy = (e.clientY - pointer.y) * 10;
 	pointer.x = e.clientX;
 	pointer.y = e.clientY;
+
+	pointer.color = getMColor(pointer);
 });
-document.addEventListener("mousedown", () => {
-	// pointer.color = [Math.round(Math.random()), Math.round(Math.random()), Math.round(Math.random())];
+window.addEventListener("scroll", () => {
+	pointer.color = getMColor(pointer);
 });
 
 AOS.init();
