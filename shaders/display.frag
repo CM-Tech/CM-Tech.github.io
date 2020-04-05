@@ -5,11 +5,12 @@ varying vec2 coords;
 uniform sampler2D density;
 uniform sampler2D velocity;
 uniform sampler2D page;
+uniform sampler2D logo;
 uniform vec2 texelSize;
 uniform float scroll;
 
 float colorDistance(vec3 a,vec3 b){
-    return 0.5-1.0/3.0*dot(a-0.5,b-0.5)*2.0;
+    return length(a-b);
 }
 
 vec3 rgb(int a,int b,int c){
@@ -24,7 +25,11 @@ vec3 getColorAt(vec2 uv){
     color.xyz=color.xyz;
     vec2 proj=(uv/texelSize-0.1*texture2D(velocity, uv).xy*1.0)+vec2(0,-scroll)/texelSize;
     vec3 bk=vec3(1.0);
-    vec4 pgt=texture2D(page, vec2(0.0,1.0)+(uv-0.1*texture2D(velocity, uv).xy*texelSize.xy)*vec2(1.0,-1.0)).xyzw;
+    vec2 pageCoord=(uv-0.1*texture2D(velocity, uv).xy*texelSize.xy);
+    vec4 pgt=texture2D(page, vec2(0.0,1.0)+pageCoord*vec2(1.0,-1.0)).xyzw;
+    vec2 lpos = vec2(pageCoord.x - 0.5, 0.5 - pageCoord.y+scroll+0.275) /texelSize.xy*texelSize.y * 3.0 + vec2(0.5, 0.5);
+    vec4 pgt2=texture2D(logo,lpos).xyzw;
+    pgt.xyzw=pgt2*pgt2.w+(1.0-pgt2.w)*pgt;
     pgt.xyz=vec3(1.0,1.0,1.0)*(pgt.xyz-vec3(0.5))+vec3(0.5);
     bk=bk*(1.0-pgt.w)+pgt.w*pgt.xyz;
     vec3 blendedColor=bk*(1.0*max(0.0,1.0-alpha)+color*alpha);
@@ -56,7 +61,11 @@ void main () {
     //     gl_FragColor = vec4(vec3(0.0),1.0);
     // }
     // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
-    if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x,100.0)<=1.0 || mod(proj.y,100.0)<=1.0)){
-        gl_FragColor = vec4(rgb(200,222,255),1.0);
+    
+    if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x-0.5/texelSize.x,100.0)<=3.0 || mod(proj.y-0.5/texelSize.y,100.0)<=3.0)){
+        gl_FragColor = vec4(rgb(5, 180, 227),1.0);
     }
+    // if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x-1.0,20.0)<=1.0 || mod(proj.y-1.0,20.0)<=1.0)){
+    //     gl_FragColor = vec4(rgb(5, 180, 227),1.0);
+    // }
 }

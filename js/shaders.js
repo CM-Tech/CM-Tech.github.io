@@ -62,7 +62,13 @@ var specialBk = false;
 var specialBk2 = false;
 const img = new Image();
 img.src = imgURL;
-let logo_tex;
+let logo_tex= regl.texture({
+	width: window.innerWidth,
+	height: window.innerHeight,
+	min: "linear",
+	mag: "linear",
+	type: "half float",
+});
 let page_tex = regl.texture({
 	width: window.innerWidth,
 	height: window.innerHeight,
@@ -273,6 +279,7 @@ export const display = regl({
 		velocity: () => velocity.read,
 		scroll: () => window.scrollY / window.innerHeight,
 		page: () => page_tex,
+		logo: () => logo_tex,
 		texelSize,
 	},
 });
@@ -298,8 +305,8 @@ export function createSplat(x, y, dx, dy, color, radius) {
 }
 export function drawLogo(dissipation) {
 	if (logo) {
-		logo({ dissipation });
-		density.swap();
+		// logo({ dissipation });
+		// density.swap();
 	}
 }
 
