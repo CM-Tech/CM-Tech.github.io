@@ -180,7 +180,7 @@ if (specialBk2) {
 			// });
 		};
 		window.renderM = renderM;
-		window.addEventListener("load", renderM);
+		renderM();
 		window.addEventListener("resize", () => { reRender = true })
 		const showCanvasTexture = () => {
 			if (wholeCanvas) {
