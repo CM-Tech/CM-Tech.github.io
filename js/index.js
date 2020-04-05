@@ -1,7 +1,7 @@
 import "zenscroll";
 import { regl } from "./canvas";
 import * as config from "./config";
-import { fullscreen, update, display, drawLogo, createSplat,getBreakpoint } from "./shaders";
+import { fullscreen, update, display, drawLogo, createSplat, getBreakpoint } from "./shaders";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -22,10 +22,10 @@ function getRepos() {
                 <h1 class="title is-size-5 is-size-4-widescreen">${e.name}</h1>
                 
                 <a class="button is-warning is-outlined is-rounded" href="${
-									e.has_pages ? "http://cm-tech.github.io/" + e.name : e.html_url
-								}" target="_blank"><span>Visit ${
+			e.has_pages ? "http://cm-tech.github.io/" + e.name : e.html_url
+			}" target="_blank"><span>Visit ${
 			e.has_pages ? "Website" : "Repo"
-		}</span><span class="icon"><i class="fas fa-angle-right"></i><!-- <i class="fas fa-angle-right"></i> --></span></a>
+			}</span><span class="icon"><i class="fas fa-angle-right"></i><!-- <i class="fas fa-angle-right"></i> --></span></a>
             </figcaption>
             <div class="overlay"></div>
         </figure>
@@ -33,8 +33,11 @@ function getRepos() {
 		document.getElementById("project-grid-columns").appendChild(a);
 	});
 }
-getRepos();
-
+try {
+	getRepos();
+} catch (err) {
+	console.log("could not get repos");
+}
 regl.frame(() => {
 	fullscreen(() => {
 		createSplat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color, config.SPLAT_RADIUS);
@@ -51,21 +54,21 @@ let pointer = {
 	y: 0,
 	dx: 0,
 	dy: 0,
-	color: [1,1,0],
+	color: [1, 1, 0],
 };
-function getMColor(pos){
-var vvy=window.scrollY+pos.y;
+function getMColor(pos) {
+	var vvy = window.scrollY + pos.y;
 
-if(vvy<window.innerHeight*getBreakpoint("breakpoint1")){
-	return [1,1,0];
-}
-if(vvy<window.innerHeight*getBreakpoint("breakpoint2")){
-	return [1,1,1];
-}
-if(vvy<window.innerHeight*getBreakpoint("breakpoint3")){
-	return [1,1,1];
-}
-return [1,0,0];
+	if (vvy < window.innerHeight * getBreakpoint("breakpoint1")) {
+		return [1, 1, 0];
+	}
+	if (vvy < window.innerHeight * getBreakpoint("breakpoint2")) {
+		return [1, 1, 1];
+	}
+	if (vvy < window.innerHeight * getBreakpoint("breakpoint3")) {
+		return [1, 1, 1];
+	}
+	return [1, 0, 0];
 }
 document.addEventListener("mousemove", (e) => {
 	pointer.dx = (e.clientX - pointer.x) * 10;
