@@ -167,6 +167,8 @@ if (specialBk2) {
 				console.error("oops, something went wrong!", error);
 				window.setTimeout(renderM, 10);
 			});
+		}else{
+			window.setTimeout(renderM, 10);
 		}
 		// html2canvas(document.querySelector("#page"),{scrollX:0,scrollY:0.0,x:0,y:window.scrollY,width:window.innerWidth,height:window.innerHeight,background:null}).then(canvas => {
 		// 	wholeCanvas = canvas;
