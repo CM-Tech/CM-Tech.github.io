@@ -140,7 +140,7 @@ if (specialBk) {
 	window.setTimeout(showCanvasTexture, 0);
 }
 if (specialBk2) {
-	window.onload = () => {
+	window.addEventListener('load',()=>{
 		var reRender = true;
 		var wholeCanvas = document.createElement("canvas");
 
@@ -200,7 +200,7 @@ if (specialBk2) {
 			requestAnimationFrame(showCanvasTexture);
 		};
 		window.setTimeout(showCanvasTexture, 0);
-	}
+	});
 }
 const advect = regl({
 	frag: advectShader,
