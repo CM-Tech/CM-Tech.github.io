@@ -59,14 +59,14 @@ const scrollk = regl({
 	viewport,
 });
 var specialBk = false;
-var specialBk2=true;
+var specialBk2 = true;
 const img = new Image();
 img.src = imgURL;
 let logo_tex;
-let page_tex=regl.texture({
+let page_tex = regl.texture({
 	width: window.innerWidth,
 	height: window.innerHeight,
-	min:  "linear",
+	min: "linear",
 	mag: "linear",
 	type: "half float",
 });
@@ -140,65 +140,67 @@ if (specialBk) {
 	window.setTimeout(showCanvasTexture, 0);
 }
 if (specialBk2) {
-	var reRender=true;
-	var wholeCanvas = document.createElement("canvas");
+	window.onload = () => {
+		var reRender = true;
+		var wholeCanvas = document.createElement("canvas");
 
-	var backCanvas = document.createElement("canvas");
-	var renderingScrollY = window.scrollY;
-	var renderedScrollY = window.scrollY;
+		var backCanvas = document.createElement("canvas");
+		var renderingScrollY = window.scrollY;
+		var renderedScrollY = window.scrollY;
 
-	const renderM = () => {
-		if(reRender){
-		renderingScrollY = window.scrollY;
+		const renderM = () => {
+			if (reRender) {
+				renderingScrollY = window.scrollY;
 
-		domtoimage
-			.toPng(document.querySelector("#page"), {
-				imagePlaceholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-			})
-			.then(function (dataUrl) {
-				var img = new Image();
-				img.src = dataUrl;
-				wholeCanvas = img;
-				document.querySelector("#c").classList.add("front");
-				reRender=false;
+				domtoimage
+					.toPng(document.querySelector("#page"), {
+						imagePlaceholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+					})
+					.then(function (dataUrl) {
+						var img = new Image();
+						img.src = dataUrl;
+						wholeCanvas = img;
+						document.querySelector("#c").classList.add("front");
+						reRender = false;
+						window.setTimeout(renderM, 10);
+					})
+					.catch(function (error) {
+						console.error("oops, something went wrong!", error);
+						window.setTimeout(renderM, 10);
+					});
+			} else {
 				window.setTimeout(renderM, 10);
-			})
-			.catch(function (error) {
-				console.error("oops, something went wrong!", error);
-				window.setTimeout(renderM, 10);
-			});
-		}else{
-			window.setTimeout(renderM, 10);
-		}
-		// html2canvas(document.querySelector("#page"),{scrollX:0,scrollY:0.0,x:0,y:window.scrollY,width:window.innerWidth,height:window.innerHeight,background:null}).then(canvas => {
-		// 	wholeCanvas = canvas;
-		// 	renderedScrollY=renderingScrollY+0;
-		// 	//console.log(wholeCanvas)
-		// 	//document.querySelector("#page").style.opacity="0";
-		// 	window.setTimeout(renderM,1000);
-		// });
-	};
-	window.renderM = renderM;
-	window.addEventListener("load", renderM);
-	window.addEventListener("resize",()=>{reRender=true})
-	const showCanvasTexture = () => {
-		if (wholeCanvas) {
-			backCanvas.width = window.innerWidth;
-			backCanvas.height = window.innerHeight;
-			var backCtx = backCanvas.getContext("2d");
-
-			// // save main canvas contents
-			backCtx.drawImage(wholeCanvas, -1.0 * window.scrollX, -1.0 * window.scrollY + renderedScrollY);
-			if (page_tex) {
-				page_tex.resize(window.innerWidth, window.innerHeight);
-				page_tex.subimage(backCanvas);
-			}else{
-				page_tex=regl.texture(backCanvas);
 			}
-		}
-		requestAnimationFrame(showCanvasTexture);
-	};
-	window.setTimeout(showCanvasTexture, 0);
+			// html2canvas(document.querySelector("#page"),{scrollX:0,scrollY:0.0,x:0,y:window.scrollY,width:window.innerWidth,height:window.innerHeight,background:null}).then(canvas => {
+			// 	wholeCanvas = canvas;
+			// 	renderedScrollY=renderingScrollY+0;
+			// 	//console.log(wholeCanvas)
+			// 	//document.querySelector("#page").style.opacity="0";
+			// 	window.setTimeout(renderM,1000);
+			// });
+		};
+		window.renderM = renderM;
+		window.addEventListener("load", renderM);
+		window.addEventListener("resize", () => { reRender = true })
+		const showCanvasTexture = () => {
+			if (wholeCanvas) {
+				backCanvas.width = window.innerWidth;
+				backCanvas.height = window.innerHeight;
+				var backCtx = backCanvas.getContext("2d");
+
+				// // save main canvas contents
+				backCtx.drawImage(wholeCanvas, -1.0 * window.scrollX, -1.0 * window.scrollY + renderedScrollY);
+				if (page_tex) {
+					page_tex.resize(window.innerWidth, window.innerHeight);
+					page_tex.subimage(backCanvas);
+				} else {
+					page_tex = regl.texture(backCanvas);
+				}
+			}
+			requestAnimationFrame(showCanvasTexture);
+		};
+		window.setTimeout(showCanvasTexture, 0);
+	}
 }
 const advect = regl({
 	frag: advectShader,
