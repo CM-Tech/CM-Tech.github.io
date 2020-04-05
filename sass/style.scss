@@ -41,11 +41,9 @@ section {
 	font-size: 8vw;
 	line-height: 1;
 	font-family: "Arcon";
-	color: black;
 }
 .top-tagline {
 	font-size: 3vw;
-	color: black;
 	font-style: bold;
 }
 
@@ -61,6 +59,7 @@ a {
 }
 
 body {
+	color: black;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -81,39 +80,20 @@ body {
 
 h1 {
 	font-family: "Arcon";
-	font-size: 6em;
+	font-size: 5vw;
 	font-weight: bold;
 	margin: 0px;
 	line-height: 1;
 }
 
 h1.gold,
-h2.gold,
 span.gold {
-	background: linear-gradient(45deg, #3835f9, #1ad3a3, #ffeb3b, #ee524a);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
-	height: 1.2em;
-	font-family: "VCR";
+	font-style: italic;
 }
-.gilbert-img{
+
+.gilbert-img {
 	height: 0.8em;
 	display: inline;
-}
-
-h1.red,
-h2.red {
-	color: $red-color;
-}
-
-h2 {
-	font-family: "Arcon";
-	font-size: 6em;
-	font-weight: bold;
-	margin: 0px;
-	color: rgb(227, 227, 227);
-	line-height: 1;
 }
 
 .navbar .container {

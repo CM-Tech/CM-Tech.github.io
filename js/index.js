@@ -37,9 +37,9 @@ getRepos();
 
 regl.frame(() => {
 	fullscreen(() => {
-		if (window.scrollY < window.innerHeight / 4||true) drawLogo(1.0 - config.DENSITY_DISSIPATION);
-
 		createSplat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color, config.SPLAT_RADIUS);
+
+		if (window.scrollY < window.innerHeight / 4) drawLogo(1.0 - config.DENSITY_DISSIPATION);
 
 		update(config);
 		display();
@@ -51,7 +51,7 @@ let pointer = {
 	y: 0,
 	dx: 0,
 	dy: 0,
-	color: [0,0,1],
+	color: [0, 0, 1],
 };
 document.addEventListener("mousemove", (e) => {
 	pointer.dx = (e.clientX - pointer.x) * 10;
@@ -60,7 +60,7 @@ document.addEventListener("mousemove", (e) => {
 	pointer.y = e.clientY;
 });
 document.addEventListener("mousedown", () => {
-	pointer.color = [Math.round(Math.random() ),Math.round(Math.random() ),Math.round(Math.random() )];
+	pointer.color = [Math.round(Math.random()), Math.round(Math.random()), Math.round(Math.random())];
 });
 
 AOS.init();
