@@ -26,6 +26,10 @@ html {
 	background: white;
 	pointer-events: none;
 }
+#c.front {
+	z-index: 1000;
+	pointer-events: none;
+}
 section {
 	padding-bottom: 15em;
 }
