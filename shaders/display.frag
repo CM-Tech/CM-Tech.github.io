@@ -156,11 +156,16 @@ void main () {
     // if(mod(proj.y,100.0)<=2.0){
     //     gl_FragColor = vec4(vec3(0.0),1.0);
     // }
+    
     float pDist=getPerlinAt(coords);
     float bads=0.0;
+    float thickness=1.0;
+    if(1.0-proj.y*texelSize.y>breakpoint2 && 1.0-proj.y*texelSize.y<=breakpoint3){
+        thickness=2.0;
+    }
     for(float i=-1.0;i<=1.0;i+=1.0){
         for(float j=-1.0;j<=1.0;j+=1.0){
-            if(getPerlinAt(coords+texelSize*vec2(i,j))<pDist){
+            if(getPerlinAt(coords+texelSize*vec2(i,j)*thickness)<pDist){
                 bads+=1.0;
             }
         }
@@ -168,7 +173,11 @@ void main () {
     // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
     
     if(length(gl_FragColor.xyz) >=length(vec3(243.0/255.0))/2.0 && bads<3.0){
+        if(1.0-proj.y*texelSize.y>breakpoint2 && 1.0-proj.y*texelSize.y<=breakpoint3){
+        gl_FragColor = vec4(rgb(243,243,243)/2.0+gl_FragColor.xyz/2.0,1.0);
+    }else{
         gl_FragColor = vec4((rgb(5, 180, 227)+1.0)*gl_FragColor.xyz/2.0,1.0);
+    }
     }
     // if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x-1.0,20.0)<=1.0 || mod(proj.y-1.0,20.0)<=1.0)){
     //     gl_FragColor = vec4(rgb(5, 180, 227),1.0);
