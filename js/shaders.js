@@ -286,6 +286,7 @@ export const display = regl({
 		breakpoint1: () => getBreakpoint("breakpoint1"),
 		breakpoint2: () =>getBreakpoint("breakpoint2"),
 		breakpoint3: () =>getBreakpoint("breakpoint3"),
+		time:({time})=>time,
 		texelSize,
 	},
 });

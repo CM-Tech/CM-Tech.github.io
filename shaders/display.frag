@@ -12,6 +12,7 @@ uniform float breakpoint1;
 uniform float breakpoint2;
 
 uniform float breakpoint3;
+uniform float time;
 
 float colorDistance(vec3 a,vec3 b){
     return length(a-b);
@@ -141,7 +142,7 @@ vec3 getColorAt(vec2 uv){
 float getPerlinAt(vec2 uv){
     
     vec2 proj=(uv/texelSize-0.1*texture2D(velocity, uv).xy*1.0)+vec2(0,-scroll)/texelSize;
-   return abs(mod(cnoise(vec3(proj-0.5/texelSize,0.0)/100.0)*8.0,1.0)-0.5);
+   return abs(mod(cnoise(vec3(proj-0.5/texelSize,time*5.0)/100.0)*8.0,1.0)-0.5);
 }
 void main () {
     vec2 proj=(coords/texelSize-0.1*texture2D(velocity, coords).xy*1.0)+vec2(0.0,-scroll)/texelSize;
