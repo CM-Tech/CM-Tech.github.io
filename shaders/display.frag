@@ -62,8 +62,8 @@ void main () {
     // }
     // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
     
-    if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x-0.5/texelSize.x,100.0)<=3.0 || mod(proj.y-0.5/texelSize.y,100.0)<=3.0)){
-        gl_FragColor = vec4(rgb(5, 180, 227),1.0);
+    if(length(gl_FragColor.xyz) >=length(vec3(243.0/255.0))/2.0 && (mod(proj.x-0.5/texelSize.x,100.0)<=3.0 || mod(proj.y-0.5/texelSize.y,100.0)<=3.0)){
+        gl_FragColor = vec4((rgb(5, 180, 227)+1.0)*gl_FragColor.xyz/2.0,1.0);
     }
     // if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x-1.0,20.0)<=1.0 || mod(proj.y-1.0,20.0)<=1.0)){
     //     gl_FragColor = vec4(rgb(5, 180, 227),1.0);
