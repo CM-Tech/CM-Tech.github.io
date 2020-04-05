@@ -13,65 +13,67 @@
 
 	<body>
 		<canvas id="c"></canvas>
-		<div id="page"><div style="height:50vh;"></div>
-		<section id="top" class="hero">
-			<div class="hero-body">
-				<p id="main-text">
-					Hello! We're <span class="gold">CM-Tech</span>. <br />
-					We are programmers and mathematicians who create efficient and beautiful front end projects.
-				</p>
-			</div>
-		</section>
+		<div id="page">
+			<div style="height: 50vh;"></div>
+			<section id="top" class="hero is-medium" data-aos="fade">
+				<div class="hero-body">
+					<p id="main-text">
+						Hello! We're <span class="gold">CM-Tech</span>. <br />
+						We are programmers and mathematicians who create efficient and beautiful front end projects.
+					</p>
+				</div>
+			</section>
 
-		<section class="section">
-			<div class="container">
+			<section class="hero is-fullheight">
+				<div class="container">
+					<div class="columns">
+						<div data-aos="fade-right" class="column is-half has-text-centered">
+							<h1 class="gold">Milo</h1>
+							<p class="top-tagline">
+								I'm a student that likes to code fun simulations of the world around me with bleeding edge tech.
+							</p>
+						</div>
+					</div>
+					<div class="columns">
+						<div data-aos="fade-left" class="column is-half is-offset-half has-text-centered">
+							<h1 class="gold">Cole</h1>
+							<p class="top-tagline">
+								I have an appreciation for people, learning, and work with passion.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container" id="main-wrapper">
 				<div class="columns">
-				<div class="milo column is-half has-text-centered">
-					<h1 class="gold">Milo M</h1>
-					<p class="top-tagline">
-							I'm a student that likes to code fun simulations of the world around me with bleeding edge tech.
-					</p>
-				</div>
-			</div>
-			<div class="columns">
-				<div class="cole column is-half is-offset-half has-text-centered">
-					<h1 class="gold">Cole K</h1>
-					<p class="top-tagline">
-							I have an appreciation for people, learning, and work with passion.
-					</p>
-				</div>
-			</div>
-			</div>
-		</section>
-
-		<div class="container" id="main-wrapper">
-			<div class="columns">
-				<div class="column">
-					<div class="box has-background-black">
-						<section class="section projects is-medium is-white has-text-centered">
-							<div class="container">
-								<h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
-									Mini Portfolio
-								</h1>
-								<h2 class="subtitle is-size-5-desktop">
-									Here are a few projects We've worked on.
-								</h2>
-								<div class="project-grid">
-									<div class="columns is-multiline is-mobile" id="project-grid-columns"></div>
-									<div class="columns is-centered">
-										<div class="column">
-											<a class="button is-danger is-outlined is-rounded is-medium" href="https://cm-tech.github.io/portfolio" target="_blank"
-												><span>See more on CM-Tech</span></a
-											>
+					<div class="column">
+						<div class="box has-background-black">
+							<section class="section projects is-medium is-white has-text-centered" data-aos="fade">
+								<div class="container">
+									<h1 class="gold">
+										Mini Portfolio
+									</h1>
+									<p class="subtitle">
+										Here are a few projects We've worked on.
+									</p>
+									<div class="project-grid">
+										<div class="columns is-multiline is-mobile" id="project-grid-columns"></div>
+										<div class="columns is-centered">
+											<div class="column">
+												<a class="button is-danger is-outlined is-rounded is-medium" href="https://cm-tech.github.io/portfolio" target="_blank"
+													><span>See more on CM-Tech</span></a
+												>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</section>
+							</section>
+						</div>
 					</div>
 				</div>
 			</div>
-			</div></div>
+		</div>
 		<script src="js/index.js"></script>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 import { regl } from "./canvas";
 import { TEXTURE_DOWNSAMPLE } from "./config";
 import { velocity, density, pressure, divergenceTex } from "./fbos";
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 import projectShader from "../shaders/project.vert";
 import splatShader from "../shaders/splat.frag";
 import logoShader from "../shaders/logo.frag";
@@ -48,9 +48,9 @@ const img = new Image();
 img.src = imgURL;
 let logo_tex;
 let logo;
-img.onload = () =>{
-	logo_tex=regl.texture(img);
-	(logo = regl({
+img.onload = () => {
+	logo_tex = regl.texture(img);
+	logo = regl({
 		frag: logoShader,
 		framebuffer: () => density.write,
 		uniforms: {
@@ -59,11 +59,11 @@ img.onload = () =>{
 			ratio: ({ viewportWidth, viewportHeight }) => {
 				return viewportWidth > viewportHeight ? [viewportWidth / viewportHeight, 1.0] : [1.0, viewportHeight / viewportWidth];
 			},
-			scroll:()=>window.scrollY/window.innerHeight,
+			scroll: () => 0,
 			dissipation: regl.prop("dissipation"),
 		},
 		viewport,
-	}));
+	});
 };
 // var wholeCanvas;
 // const renderM=()=>{
@@ -190,7 +190,7 @@ export const update = (config) => {
 		framebuffer: velocity.write,
 		x: velocity.read,
 		dissipation: config.VELOCITY_DISSIPATION,
-		color: [0,0,0, 0],
+		color: [0, 0, 0, 0],
 	});
 	velocity.swap();
 
@@ -198,7 +198,7 @@ export const update = (config) => {
 		framebuffer: density.write,
 		x: density.read,
 		dissipation: config.DENSITY_DISSIPATION,
-		color: [243/255,243/255,243/255, 0],
+		color: [243 / 255, 243 / 255, 243 / 255, 0],
 	});
 	density.swap();
 

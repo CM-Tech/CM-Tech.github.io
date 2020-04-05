@@ -7,10 +7,9 @@
 	font-family: "VCR";
 }
 
-
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap");
 $family-sans-serif: "Work Sans";
-// $red:#ff4e21;
+$red: #ff4e21;
 $yellow: #ffc621;
 $text-strong: #000000;
 $text: #bebebe;
@@ -27,7 +26,10 @@ html {
 	top: 0;
 	left: 0;
 	z-index: -1000;
-	background:white;
+	background: white;
+}
+section {
+	padding-bottom: 15em;
 }
 .fc {
 	height: 1em;
@@ -41,7 +43,7 @@ html {
 	color: black;
 }
 .top-tagline {
-	font-size:3vw;
+	font-size: 3vw;
 	color: black;
 	font-style: bold;
 }
@@ -87,7 +89,6 @@ h1 {
 h1.gold,
 h2.gold,
 span.gold {
-	// color: $gold-color;
 	background: linear-gradient(45deg, #3835f9, #1ad3a3, #ffeb3b, #ee524a);
 	background-clip: text;
 	-webkit-background-clip: text;
@@ -117,7 +118,6 @@ h2 {
 	box-sizing: border-box;
 	transition: box-shadow 1s;
 }
-
 
 .dash-hr {
 	width: 40px;
@@ -175,20 +175,6 @@ h2 {
 
 .section.skills .box .content .columns {
 	flex-wrap: wrap;
-}
-
-.skill-intro {
-	height: 6rem;
-}
-
-.skill-cont {
-	height: 10rem;
-}
-
-.start-logo {
-	max-width: 300px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .projects .project-grid figure {

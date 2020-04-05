@@ -2,14 +2,14 @@ import "zenscroll";
 import { regl } from "./canvas";
 import * as config from "./config";
 import { fullscreen, update, display, drawLogo, createSplat } from "./shaders";
-import scrollreveal from "scrollreveal";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function getRepos() {
 	var req = new XMLHttpRequest();
 	req.open("GET", "https://api.github.com/users/cm-tech/repos?per_page=1000", false);
 	req.send(null);
-	var repos = eval(req.responseText);
-	console.log(repos);
+	var repos = JSON.parse(req.responseText);
 	repos.forEach(function (e) {
 		var a = document.createElement("div");
 		a.className = "column is-12-mobile is-half-tablet is-one-third-desktop";
@@ -33,14 +33,14 @@ function getRepos() {
 		document.getElementById("project-grid-columns").appendChild(a);
 	});
 }
-// getRepos();
+getRepos();
 
 regl.frame(() => {
 	fullscreen(() => {
-		drawLogo(1.0 - config.DENSITY_DISSIPATION);
-		
+		if (window.scrollY < window.innerHeight / 4) drawLogo(1.0 - config.DENSITY_DISSIPATION);
+
 		createSplat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color, config.SPLAT_RADIUS);
-		
+
 		update(config);
 		display();
 	});
@@ -51,7 +51,7 @@ let pointer = {
 	y: 0,
 	dx: 0,
 	dy: 0,
-	color: [0,0,0],
+	color: [0, 0, 0],
 };
 document.addEventListener("mousemove", (e) => {
 	pointer.dx = (e.clientX - pointer.x) * 10;
@@ -60,8 +60,7 @@ document.addEventListener("mousemove", (e) => {
 	pointer.y = e.clientY;
 });
 document.addEventListener("mousedown", () => {
-	pointer.color = [0,0,0];
+	pointer.color = [0, 0, 0];
 });
 
-ScrollReveal().reveal('.cole');
-ScrollReveal().reveal('.milo');
+AOS.init();
