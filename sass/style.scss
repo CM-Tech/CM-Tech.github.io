@@ -73,7 +73,11 @@ h1 {
 
 h1.gold,
 span.gold {
-	font-style: italic;
+	text-decoration: underline;
+	// transform:skewX(-5deg);
+	// &.cole-text{
+	// 	transform:skewX(5deg);
+	// }
 }
 
 .navbar .container {

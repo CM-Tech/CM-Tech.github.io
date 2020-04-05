@@ -199,6 +199,9 @@ export const display = regl({
 	frag: displayShader,
 	uniforms: {
 		density: () => density.read,
+		velocity: () => velocity.read,
+		scroll: () => window.scrollY / window.innerHeight,
+		texelSize,
 	},
 });
 

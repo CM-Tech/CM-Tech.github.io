@@ -3,6 +3,9 @@ precision mediump sampler2D;
 
 varying vec2 coords;
 uniform sampler2D density;
+uniform sampler2D velocity;
+uniform vec2 texelSize;
+uniform float scroll;
 
 float colorDistance(vec3 a,vec3 b){
     return 0.5-1.0/3.0*dot(a-0.5,b-0.5)*2.0;
@@ -17,6 +20,8 @@ void main () {
     float alpha=clamp(texture2D(density, coords).w,0.0,1.0);
     color=clamp(color,0.0,1.0); //sometimes the color might have a really high component that we need to tune down
     color.xyz=color.xyz;
+    vec2 proj=(coords/texelSize-texture2D(velocity, coords).xy*1.0)+vec2(0,-scroll)/texelSize;
+    
     vec3 blendedColor=vec3(243.0/255.0)*max(0.0,1.0-alpha)+color*alpha;
     vec3 bestColorMatch=vec3(243.0/255.0);
     addToPalette(211, 68, 176);
@@ -32,4 +37,10 @@ void main () {
     addToPalette(0, 140, 60);
     
     gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
+    if(mod(proj.x,100.0)<=2.0){
+        gl_FragColor = vec4(vec3(0.0),1.0);
+    }
+    if(mod(proj.y,100.0)<=2.0){
+        gl_FragColor = vec4(vec3(0.0),1.0);
+    }
 }
