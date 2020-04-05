@@ -16,6 +16,7 @@ void main () {
     vec3 color=texture2D(density, coords).xyz;
     float alpha=clamp(texture2D(density, coords).w,0.0,1.0);
     color=clamp(color,0.0,1.0); //sometimes the color might have a really high component that we need to tune down
+    color.xyz=1.0-color.xyz;
     vec3 blendedColor=vec3(243.0/255.0)*max(0.0,1.0-alpha)+color*243.0/255.0*alpha;
     vec3 bestColorMatch=vec3(243.0/255.0);
     addToPalette(211, 68, 176);
@@ -24,9 +25,10 @@ void main () {
     addToPalette(47, 200, 120);
     addToPalette(250, 112, 21);
     addToPalette(8, 180, 227);
-    addToPalette(251, 191, 71);
+    addToPalette(255, 200, 67);
     addToPalette(15, 51, 163);
     addToPalette(12,12,12);
+    addToPalette(218, 24, 0);
     
     gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
 }

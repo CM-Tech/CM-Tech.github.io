@@ -22,6 +22,7 @@
         "@fortawesome/fontawesome-free": "^5.13.0",
         "aos": "^2.3.4",
         "bulma": "^0.8.1",
+        "dom-to-image": "^2.6.0",
         "html2canvas": "^1.0.0-rc.5",
         "regl": "^1.4.2",
         "zenscroll": "^4.0.2"

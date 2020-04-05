@@ -34,6 +34,6 @@ function createFbo(filter) {
 }
 
 export const velocity = doubleFbo("linear");
-export const density = doubleFbo("nearest");
+export const density = doubleFbo("linear");
 export const pressure = doubleFbo("nearest");
 export const divergenceTex = createFbo("nearest");

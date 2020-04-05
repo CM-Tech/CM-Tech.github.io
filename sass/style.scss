@@ -27,6 +27,7 @@ html {
 	left: 0;
 	z-index: -1000;
 	background: white;
+	pointer-events: none;
 }
 section {
 	padding-bottom: 15em;
@@ -95,6 +96,10 @@ span.gold {
 	color: transparent;
 	height: 1.2em;
 	font-family: "VCR";
+}
+.gilbert-img{
+	height: 0.8em;
+	display: inline;
 }
 
 h1.red,

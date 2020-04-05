@@ -2,6 +2,7 @@ import { regl } from "./canvas";
 import { TEXTURE_DOWNSAMPLE } from "./config";
 import { velocity, density, pressure, divergenceTex } from "./fbos";
 import html2canvas from "html2canvas";
+import domtoimage from 'dom-to-image';
 import projectShader from "../shaders/project.vert";
 import splatShader from "../shaders/splat.frag";
 import logoShader from "../shaders/logo.frag";
@@ -12,6 +13,7 @@ import clearShader from "../shaders/clear.frag";
 import gradientSubtractShader from "../shaders/gradientSubtract.frag";
 import jacobiShader from "../shaders/jacobi.frag";
 import displayShader from "../shaders/display.frag";
+import scrollShader from "../shaders/scroll.frag";
 
 import imgURL from "../img/cm-logo-s.png";
 
@@ -43,7 +45,20 @@ const splat = regl({
 	},
 	viewport,
 });
-
+const scrollk = regl({
+	frag: scrollShader,
+	framebuffer: regl.prop("framebuffer"),
+	uniforms: {
+		image: regl.prop("x"),
+		ratio: ({ viewportWidth, viewportHeight }) => {
+			return [1, 1];// viewportWidth > viewportHeight ? [viewportWidth / viewportHeight, 1.0] : [1.0, viewportHeight / viewportWidth];
+		},
+		scroll: regl.prop("scroll"),
+		dissipation: regl.prop("dissipation"),
+	},
+	viewport,
+});
+var specialBk=false;
 const img = new Image();
 img.src = imgURL;
 let logo_tex;
@@ -57,38 +72,63 @@ img.onload = () => {
 			density: () => density.read,
 			image: logo_tex,
 			ratio: ({ viewportWidth, viewportHeight }) => {
-				return viewportWidth > viewportHeight ? [viewportWidth / viewportHeight, 1.0] : [1.0, viewportHeight / viewportWidth];
+				return specialBk?[1,1]:(viewportWidth > viewportHeight ? [viewportWidth / viewportHeight, 1.0] : [1.0, viewportHeight / viewportWidth]);
 			},
-			scroll: () => 0,
+			scroll: () => specialBk?0:window.scrollY/window.innerHeight,
 			dissipation: regl.prop("dissipation"),
 		},
 		viewport,
 	});
 };
-// var wholeCanvas;
-// const renderM=()=>{
-// 	html2canvas(document.querySelector("#page")).then(canvas => {
-// 		wholeCanvas=canvas;
-// 		document.querySelector("#page").style.opacity="0";
-// 		//requestAnimationFrame(renderM);
-// 	});
-// }
-// renderM();
-// const showCanvasTexture=()=>{
-// 	if(wholeCanvas){
-// 		var backCanvas = document.createElement('canvas');
-// backCanvas.width = window.innerWidth;
-// backCanvas.height = window.innerHeight;
-// var backCtx = backCanvas.getContext('2d');
+var lastScrollY=window.scrollY+0.0;
+if(specialBk){
+var wholeCanvas= document.createElement('canvas');
 
-// // save main canvas contents
-// backCtx.drawImage(wholeCanvas, -1.0*window.scrollX,-1.0*window.scrollY);
-// 		logo_tex.resize(window.innerWidth,window.innerHeight);
-// 		logo_tex.subimage(backCanvas);
-// 	}
-// 	requestAnimationFrame(showCanvasTexture);
-// }
-// showCanvasTexture();
+var backCanvas = document.createElement('canvas');
+var renderingScrollY=window.scrollY;
+var renderedScrollY=window.scrollY;
+
+const renderM = () => {
+	renderingScrollY=window.scrollY
+
+domtoimage.toPng(document.querySelector("#page"),{imagePlaceholder:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="})
+.then(function (dataUrl) {
+	var img = new Image();
+	img.src = dataUrl;
+	wholeCanvas = img;
+	window.setTimeout(renderM,1000);
+})
+.catch(function (error) {
+	console.error('oops, something went wrong!', error);
+});
+	// html2canvas(document.querySelector("#page"),{scrollX:0,scrollY:0.0,x:0,y:window.scrollY,width:window.innerWidth,height:window.innerHeight,background:null}).then(canvas => {
+	// 	wholeCanvas = canvas;
+	// 	renderedScrollY=renderingScrollY+0;
+	// 	//console.log(wholeCanvas)
+	// 	//document.querySelector("#page").style.opacity="0";
+	// 	window.setTimeout(renderM,1000);
+	// });
+}
+window.renderM=renderM;
+window.addEventListener("load",renderM)
+const showCanvasTexture = () => {
+	
+	if (wholeCanvas) {
+		backCanvas.width = window.innerWidth;
+		backCanvas.height = window.innerHeight;
+		var backCtx = backCanvas.getContext('2d');
+
+		// // save main canvas contents
+		backCtx.drawImage(wholeCanvas, -1.0 * window.scrollX, -1.0 * window.scrollY+renderedScrollY);
+		if(logo_tex){
+		logo_tex.resize(window.innerWidth, window.innerHeight);
+		logo_tex.subimage(backCanvas);
+		}
+	}
+	requestAnimationFrame(showCanvasTexture);
+}
+window.setTimeout(showCanvasTexture, 0);
+}
 const advect = regl({
 	frag: advectShader,
 	framebuffer: regl.prop("framebuffer"),
@@ -185,7 +225,27 @@ export function drawLogo(dissipation) {
 		density.swap();
 	}
 }
+
 export const update = (config) => {
+		scrollk({
+			framebuffer: velocity.write,
+			x: velocity.read,
+			dissipation: 0,
+			color: [0, 0, 0, 0],
+			scroll:-(window.scrollY-lastScrollY)/window.innerHeight
+		});
+		velocity.swap();
+	
+		scrollk({
+			framebuffer: density.write,
+			x: density.read,
+			dissipation: 0,
+			color: [243 / 255, 243 / 255, 243 / 255, 0],
+			scroll:-(window.scrollY-lastScrollY)/window.innerHeight
+		});
+		density.swap();
+		lastScrollY=window.scrollY;
+	
 	advect({
 		framebuffer: velocity.write,
 		x: velocity.read,
