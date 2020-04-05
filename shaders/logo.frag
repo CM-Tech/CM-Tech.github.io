@@ -9,8 +9,6 @@ uniform float scroll;
 
 void main(void) {
     if(ratio==vec2(1.0,1.0)){
-    
-  
   vec2 pos = vec2(coords.x,1.0-coords.y);//vec2(coords.x - 0.5, 0.75 - coords.y+scroll) * ratio * 2.0 + vec2(0.5, 0.5);
   vec4 logo = texture2D(image, pos);
   float ler = 1.0;
@@ -23,7 +21,7 @@ void main(void) {
   gl_FragColor = newColor;
     }else{
 
-  vec2 pos = vec2(coords.x - 0.5, 0.75 - coords.y+scroll) * ratio * 2.0 + vec2(0.5, 0.5);
+  vec2 pos = vec2(coords.x - 0.5, 0.5 - coords.y+scroll+0.275) * ratio * 3.0 + vec2(0.5, 0.5);
   vec4 logo = texture2D(image, pos);
   float ler = 1.0;
   if(logo.xyz==vec3(1.0)){

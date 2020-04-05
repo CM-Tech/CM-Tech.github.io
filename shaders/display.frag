@@ -55,4 +55,8 @@ void main () {
     // if(mod(proj.y,100.0)<=2.0){
     //     gl_FragColor = vec4(vec3(0.0),1.0);
     // }
+    // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
+    if(gl_FragColor.xyz == vec3(243.0/255.0) && (mod(proj.x,100.0)<=1.0 || mod(proj.y,100.0)<=1.0)){
+        gl_FragColor = vec4(rgb(200,222,255),1.0);
+    }
 }

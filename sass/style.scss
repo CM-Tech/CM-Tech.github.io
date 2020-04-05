@@ -36,20 +36,16 @@ section {
 
 #main-text {
 	width: 100%;
-	font-size: 8vw;
+	font-size: 6vw;
 	line-height: 1;
 	font-family: "Arcon";
 }
 .top-tagline {
 	font-size: 3vw;
 	font-style: bold;
+	line-height: 1.3;
 }
-.inverted {
-	background: #000;
-	// font-style: italic;
-	// text-decoration: underline;
-	color: rgb(243, 243, 243);
-}
+
 .skill-icon {
 	font-size: 128px;
 }
@@ -72,16 +68,11 @@ h1 {
 	font-size: 5vw;
 	font-weight: bold;
 	margin: 0px;
-	line-height: 1;
 }
 
 h1.gold,
 span.gold {
 	text-decoration: underline;
-	// transform:skewX(-5deg);
-	// &.cole-text{
-	// 	transform:skewX(5deg);
-	// }
 }
 
 .navbar .container {

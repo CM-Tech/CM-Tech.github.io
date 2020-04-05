@@ -59,7 +59,7 @@ const scrollk = regl({
 	viewport,
 });
 var specialBk = false;
-var specialBk2 = true;
+var specialBk2 = false;
 const img = new Image();
 img.src = imgURL;
 let logo_tex;
