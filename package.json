@@ -21,7 +21,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
         "bulma": "^0.8.1",
+        "html2canvas": "^1.0.0-rc.5",
         "regl": "^1.4.2",
+        "scrollreveal": "^4.0.6",
         "zenscroll": "^4.0.2"
     }
 }

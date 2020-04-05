@@ -1,11 +1,12 @@
 import { regl } from "./canvas";
 import { TEXTURE_DOWNSAMPLE } from "./config";
 import { velocity, density, pressure, divergenceTex } from "./fbos";
-
+import html2canvas from 'html2canvas';
 import projectShader from "../shaders/project.vert";
 import splatShader from "../shaders/splat.frag";
 import logoShader from "../shaders/logo.frag";
 import advectShader from "../shaders/advect.frag";
+import advectColorShader from "../shaders/advectColor.frag";
 import divergenceShader from "../shaders/divergence.frag";
 import clearShader from "../shaders/clear.frag";
 import gradientSubtractShader from "../shaders/gradientSubtract.frag";
@@ -45,25 +46,64 @@ const splat = regl({
 
 const img = new Image();
 img.src = imgURL;
-
+let logo_tex;
 let logo;
-img.onload = () =>
+img.onload = () =>{
+	logo_tex=regl.texture(img);
 	(logo = regl({
 		frag: logoShader,
 		framebuffer: () => density.write,
 		uniforms: {
 			density: () => density.read,
-			image: regl.texture(img),
+			image: logo_tex,
 			ratio: ({ viewportWidth, viewportHeight }) => {
 				return viewportWidth > viewportHeight ? [viewportWidth / viewportHeight, 1.0] : [1.0, viewportHeight / viewportWidth];
 			},
+			scroll:()=>window.scrollY/window.innerHeight,
 			dissipation: regl.prop("dissipation"),
 		},
 		viewport,
 	}));
+};
+// var wholeCanvas;
+// const renderM=()=>{
+// 	html2canvas(document.querySelector("#page")).then(canvas => {
+// 		wholeCanvas=canvas;
+// 		document.querySelector("#page").style.opacity="0";
+// 		//requestAnimationFrame(renderM);
+// 	});
+// }
+// renderM();
+// const showCanvasTexture=()=>{
+// 	if(wholeCanvas){
+// 		var backCanvas = document.createElement('canvas');
+// backCanvas.width = window.innerWidth;
+// backCanvas.height = window.innerHeight;
+// var backCtx = backCanvas.getContext('2d');
 
+// // save main canvas contents
+// backCtx.drawImage(wholeCanvas, -1.0*window.scrollX,-1.0*window.scrollY);
+// 		logo_tex.resize(window.innerWidth,window.innerHeight);
+// 		logo_tex.subimage(backCanvas);
+// 	}
+// 	requestAnimationFrame(showCanvasTexture);
+// }
+// showCanvasTexture();
 const advect = regl({
 	frag: advectShader,
+	framebuffer: regl.prop("framebuffer"),
+	uniforms: {
+		timestep: 0.017,
+		dissipation: regl.prop("dissipation"),
+		color: regl.prop("color"),
+		x: regl.prop("x"),
+		velocity: () => velocity.read,
+		texelSize,
+	},
+	viewport,
+});
+const advectColor = regl({
+	frag: advectColorShader,
 	framebuffer: regl.prop("framebuffer"),
 	uniforms: {
 		timestep: 0.017,
@@ -150,15 +190,15 @@ export const update = (config) => {
 		framebuffer: velocity.write,
 		x: velocity.read,
 		dissipation: config.VELOCITY_DISSIPATION,
-		color: [0, 0, 0, 0],
+		color: [0,0,0, 0],
 	});
 	velocity.swap();
 
-	advect({
+	advectColor({
 		framebuffer: density.write,
 		x: density.read,
 		dissipation: config.DENSITY_DISSIPATION,
-		color: [0.1, 0.1, 0.1, 1],
+		color: [243/255,243/255,243/255, 0],
 	});
 	density.swap();
 

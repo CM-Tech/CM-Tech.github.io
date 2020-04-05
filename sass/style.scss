@@ -2,6 +2,11 @@
 	src: url("../arcon-font/Arcon-Regular.otf");
 	font-family: "Arcon";
 }
+@font-face {
+	src: url("../fonts/VCR_OSD_MONO_1.001.ttf");
+	font-family: "VCR";
+}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap");
 $family-sans-serif: "Work Sans";
@@ -34,6 +39,11 @@ html {
 	line-height: 1;
 	font-family: "Arcon";
 	color: black;
+}
+.top-tagline {
+	font-size:3vw;
+	color: black;
+	font-style: bold;
 }
 
 .skill-icon {
@@ -83,6 +93,7 @@ span.gold {
 	-webkit-background-clip: text;
 	color: transparent;
 	height: 1.2em;
+	font-family: "VCR";
 }
 
 h1.red,
