@@ -173,7 +173,7 @@ void main () {
     // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
     
     if(length(gl_FragColor.xyz) >=length(vec3(243.0/255.0))/2.0 && bads<3.0){
-        gl_FragColor.xyz=gl_FragColor.xyz*(1.5-length(gl_FragColor.xyz)/pow(3.0,0.5));
+        gl_FragColor.xyz=gl_FragColor.xyz*mix(1.5-length(gl_FragColor.xyz)/pow(3.0,0.5),1.0,1.0-pow(0.5+0.5*cnoise(vec3((coords+vec2(0,scroll))/texelSize,time*5.0)/200.0),3.0));
     //     if(1.0-proj.y*texelSize.y>breakpoint1*coords.x+breakpoint3*(1.-coords.x) && 1.0-proj.y*texelSize.y<=breakpoint3){
     //     gl_FragColor = vec4(2.0*gl_FragColor.xyz-((rgb(5, 180, 227)+1.0)*gl_FragColor.xyz/4.0),1.0);
     // }else{
