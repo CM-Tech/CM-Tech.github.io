@@ -108,7 +108,7 @@ vec3 getColorAt(vec2 uv){
     if(1.0-pageCoord.y+scroll>breakpoint1){
         bk=rgb(255, 200, 67);
     }
-    if(1.0-pageCoord.y+scroll>breakpoint2){
+    if(1.0-pageCoord.y+scroll>breakpoint1*coords.x+breakpoint3*(1.-coords.x)){
         bk=rgb(246, 85, 75);//(218, 24, 0);
     }
      if(1.0-pageCoord.y+scroll>breakpoint3){
@@ -173,7 +173,7 @@ void main () {
     // gl_FragColor = vec4(mix(bestColorMatch,vec3(1.0),0.0),1.0);
     
     if(length(gl_FragColor.xyz) >=length(vec3(243.0/255.0))/2.0 && bads<3.0){
-        if(1.0-proj.y*texelSize.y>breakpoint2 && 1.0-proj.y*texelSize.y<=breakpoint3){
+        if(1.0-proj.y*texelSize.y>breakpoint1*coords.x+breakpoint3*(1.-coords.x) && 1.0-proj.y*texelSize.y<=breakpoint3){
         gl_FragColor = vec4(2.0*gl_FragColor.xyz-((rgb(5, 180, 227)+1.0)*gl_FragColor.xyz/4.0),1.0);
     }else{
         gl_FragColor = vec4((rgb(5, 180, 227)+1.0)*gl_FragColor.xyz/2.0,1.0);
