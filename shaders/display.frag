@@ -108,8 +108,14 @@ vec3 getColorAt(vec2 uv){
     if(1.0-pageCoord.y+scroll>breakpoint1){
         bk=rgb(255, 200, 67);
     }
-    if(1.0-pageCoord.y+scroll>breakpoint1*coords.x+breakpoint3*(1.-coords.x)){
+    if(breakpoint2>breakpoint1){
+    if(1.0-pageCoord.y+scroll>breakpoint2){
         bk=rgb(246, 85, 75);//(218, 24, 0);
+    }
+    }else{
+        if(pageCoord.x>0.5 && 1.0-pageCoord.y+scroll>breakpoint1){
+        bk=rgb(246, 85, 75);//(218, 24, 0);
+    }
     }
      if(1.0-pageCoord.y+scroll>breakpoint3){
         bk=vec3(1.0);
