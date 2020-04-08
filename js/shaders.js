@@ -72,8 +72,8 @@ let logo_tex= regl.texture({
 let page_tex = regl.texture({
 	width: window.innerWidth,
 	height: window.innerHeight,
-	min: "linear",
-	mag: "linear",
+	min: "nearest",
+	mag: "nearest",
 	type: "half float",
 });
 let logo;
