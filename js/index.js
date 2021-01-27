@@ -16,7 +16,7 @@ function getRepos() {
 
 		a.innerHTML = `
         <figure class="image is-2by1">
-        <img class="project-thumb" src="https://raw.githubusercontent.com/CM-Tech/${e.name.toLowerCase()}/master/README.png" onerror="this.style.display='none';this.parentElement.classList.add('no-image')"/>
+        <img class="project-thumb" src="https://raw.githubusercontent.com/CM-Tech/${e.name.toLowerCase()}/${encodeURIComponent(e.default_branch)}/README.png" onerror="this.style.display='none';this.parentElement.classList.add('no-image')"/>
           
             <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">${e.name}</h1>
