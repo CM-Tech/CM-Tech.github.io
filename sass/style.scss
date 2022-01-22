@@ -1,6 +1,6 @@
 @font-face {
-	src: url("../fonts/Arcon-Regular.otf");
-	font-family: "Arcon";
+  src: url("../fonts/Arcon-Regular.otf");
+  font-family: "Arcon";
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap");
@@ -13,185 +13,182 @@ $text: #000000;
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 html {
-	font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 #c {
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -1000;
-	background: white;
-	pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  background: white;
+  pointer-events: none;
 }
 #c.front {
-	z-index: 1000;
-	pointer-events: none;
-}
-section {
-	// padding-bottom: 15em;
+  z-index: 1000;
+  pointer-events: none;
 }
 
 #main-text {
-	width: 100%;
-	font-size: 6.3vh;
-	line-height: 1;
-	font-family: "Arcon";
+  width: 100%;
+  font-size: 6.3vh;
+  line-height: 1;
+  font-family: "Arcon";
 }
 .top-tagline {
-	font-size: 3vw;
-	font-style: bold;
-	line-height: 1.3;
+  font-size: 3vw;
+  font-style: bold;
+  line-height: 1.3;
 }
 
 .skill-icon {
-	font-size: 128px;
+  font-size: 128px;
 }
 
 $red-color: #ff4e21;
 $gold-color: #ffc621;
 a {
-	color: $red-color;
-	text-decoration: none;
+  color: $red-color;
+  text-decoration: none;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	text-align: left;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 h1 {
-	font-family: "Arcon";
-	font-size: 5vw;
-	font-weight: bold;
-	margin: 0px;
+  font-family: "Arcon";
+  font-size: 5vw;
+  font-weight: bold;
+  margin: 0px;
 }
 
 h1.gold,
 span.gold {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .navbar .container {
-	padding: 1.125rem 1.25rem !important;
-	display: flex !important;
-	max-width: 900px;
-	box-sizing: border-box;
-	transition: box-shadow 1s;
+  padding: 1.125rem 1.25rem !important;
+  display: flex !important;
+  max-width: 900px;
+  box-sizing: border-box;
+  transition: box-shadow 1s;
 }
 
 .section.skills {
-	width: 100%;
-	.box {
-		height: 100%;
-		.content .columns {
-			.column ul {
-				list-style: none;
-				margin-left: 0;
-				margin-top: 0;
-			}
-		}
-	}
+  width: 100%;
+  .box {
+    height: 100%;
+    .content .columns {
+      .column ul {
+        list-style: none;
+        margin-left: 0;
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 .section.skills {
-	.column {
-		&:nth-child(1) {
-			.box {
-				background: linear-gradient(45deg, $blue, $purple);
-			}
-		}
-		&:nth-child(2) {
-			.box {
-				background: linear-gradient(45deg, $purple, $red);
-			}
-		}
-		&:nth-child(3) {
-			.box {
-				background: linear-gradient(45deg, $red, mix($red, $yellow));
-			}
-		}
-		&:nth-child(4) {
-			.box {
-				background: linear-gradient(45deg, mix($red, $yellow), $yellow);
-			}
-		}
-	}
+  .column {
+    &:nth-child(1) {
+      .box {
+        background: linear-gradient(45deg, $blue, $purple);
+      }
+    }
+    &:nth-child(2) {
+      .box {
+        background: linear-gradient(45deg, $purple, $red);
+      }
+    }
+    &:nth-child(3) {
+      .box {
+        background: linear-gradient(45deg, $red, mix($red, $yellow));
+      }
+    }
+    &:nth-child(4) {
+      .box {
+        background: linear-gradient(45deg, mix($red, $yellow), $yellow);
+      }
+    }
+  }
 }
 
 .section.skills .box .content .columns {
-	flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .projects .project-grid figure {
-	overflow: hidden;
-	border-radius: 6px;
-	img.project-thumb {
-		background: transparent;
-		-webkit-transform: scale(1);
-		transform: scale(1);
-		-webkit-transition: 0.25s ease-in-out;
-		transition: 0.25s ease-in-out;
-		object-fit: cover;
-		background:black;
-	}
-	figcaption {
-		display: -webkit-box;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		flex-direction: column;
-		-webkit-box-pack: center;
-		justify-content: center;
-		padding: 0rem 3rem;
-		h1,
-		a {
-			color: #fff !important;
-		}
-		z-index: 1;
-	}
+  overflow: hidden;
+  border-radius: 6px;
+  img.project-thumb {
+    background: transparent;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    object-fit: cover;
+    background: black;
+  }
+  figcaption {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0rem 3rem;
+    h1,
+    a {
+      color: #fff !important;
+    }
+    z-index: 1;
+  }
 }
 
 .projects .project-grid .overlay,
 .projects .project-grid figcaption {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	-webkit-transition: 0.45s ease-in-out;
-	transition: 0.45s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: 0.45s ease-in-out;
+  transition: 0.45s ease-in-out;
 }
 
 .projects .project-grid figure:hover img {
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .projects .project-grid figure:hover .overlay,
 .projects .project-grid figure:hover figcaption,
 .projects .project-grid figure.no-image .overlay,
 .projects .project-grid figure.no-image figcaption {
-	opacity: 1;
+  opacity: 1;
 }
 
 .projects .project-grid .overlay {
-	background-color: $red;
+  background-color: $red;
 }
 
 .projects .project-grid figure:hover .overlay,
 .projects .project-grid figure:hover figcaption {
-	opacity: 1;
+  opacity: 1;
 }
-.top-container{
-	margin-top: auto;
-	margin-bottom: 0;
+.top-container {
+  margin-top: auto;
+  margin-bottom: 0;
 }
-.blurb-img{
-	height:calc( 50vh - 0px );
-	max-width: 70vw;
+.blurb-img {
+  height: calc(50vh - 0px);
+  max-width: 70vw;
 }

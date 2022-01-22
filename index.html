@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
-		<title>CM-Tech</title>
-		<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
-		<link rel="stylesheet" href="sass/style.scss" />
-		<script>
-			if (window.location.host == "cm-tech.github.io") window.location.host = "www.cm-ht.ml";
-		</script>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+    <title>CM-Tech</title>
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+    <link rel="stylesheet" href="sass/style.scss" />
+    <script>
+      if (window.location.host == "cm-tech.github.io") window.location.host = "www.cm-ht.ml";
+    </script>
+  </head>
 
-	<body>
-		<canvas id="c"></canvas>
-		<div id="page">
-			<section class="hero is-fullheight aos-init aos-animate has-text-centered"  data-aos="fade-up">
-				<div class="hero-body">
-				  <div class="container top-container">
-					<!-- <h1 class="title top-title">
+  <body>
+    <canvas id="c"></canvas>
+    <div id="page">
+      <section class="hero is-fullheight aos-init aos-animate has-text-centered" data-aos="fade-up">
+        <div class="hero-body">
+          <div class="container top-container">
+            <!-- <h1 class="title top-title">
 						CM-Tech
 					</h1> -->
-					<h2 class="subtitle">
-						<img src="img/blurb.svg" class="blurb-img"/>
-						<!-- We are programmers <br />and mathematicians <br />who create efficient <br />and beautiful<br />
+            <h2 class="subtitle">
+              <img src="img/blurb.svg" class="blurb-img" />
+              <!-- We are programmers <br />and mathematicians <br />who create efficient <br />and beautiful<br />
 						front-end projects. -->
-					</h2>
-				  </div>
-				</div>
-			  </section>
-			<section class="hero">
-				<div class="container is-fluid">
-					<div class="columns">
-					
-					<div class="column">
-						<span id="breakpoint1"></span>
-						<div data-aos="fade-right" class="has-text-left">
-							<h1 class="gold is-size-1">Milo</h1>
-							<p class="top-tagline is-size-3">
-								I'm a student who likes to code fun simulations of the world around me with bleeding edge tech.
-							</p>
-						</div>
-					</div>
-					<div class="column">
-						
-					<span id="breakpoint2"></span>
-						<div data-aos="fade-left" class="has-text-right">
-							<h1 class="gold cole-text is-size-1">Cole</h1>
-							<p class="top-tagline is-size-3">
-								I have an appreciation for people, learning, and work with passion. <br/>Math is cool.
-							</p>
-						</div>
-						
-					</div>
-				</div>
-				
-				<span id="breakpoint3"></span>
-				</div>
-			</section>
-			
-			<section class="hero is-fullheight">
-			<div class="container">
-				<div class="columns">
-					<div class="column">
-						<section class="section projects is-medium has-text-centered" data-aos="fade">
-							<div class="container">
-								<h1 class="gold">
-									Mini Portfolio
-								</h1>
-								<p class="subtitle">
-									Here are a few projects We've worked on.
-								</p>
-								<div class="project-grid">
-									<div class="columns is-multiline is-mobile" id="project-grid-columns"></div>
-									<div class="columns is-centered">
-										<div class="column">
-											<a class="button is-danger is-outlined is-rounded is-medium" href="https://cm-tech.github.io/portfolio" target="_blank"
-												><span>See more on CM-Tech</span></a
-											>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-			</section>
-		</div>
-		<script src="js/index.js"></script>
-	</body>
+            </h2>
+          </div>
+        </div>
+      </section>
+      <section class="hero">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">
+              <span id="breakpoint1"></span>
+              <div data-aos="fade-right" class="has-text-left">
+                <h1 class="gold is-size-1">Milo</h1>
+                <p class="top-tagline is-size-3">I'm a student who likes to code fun simulations of the world around me with bleeding edge tech.</p>
+              </div>
+            </div>
+            <div class="column">
+              <span id="breakpoint2"></span>
+              <div data-aos="fade-left" class="has-text-right">
+                <h1 class="gold cole-text is-size-1">Cole</h1>
+                <p class="top-tagline is-size-3">I have an appreciation for people, learning, and work with passion. <br />Math is cool.</p>
+              </div>
+            </div>
+          </div>
+
+          <span id="breakpoint3"></span>
+        </div>
+      </section>
+
+      <section class="hero is-fullheight">
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <section class="section projects is-medium has-text-centered" data-aos="fade">
+                <div class="container">
+                  <h1 class="gold">Mini Portfolio</h1>
+                  <p class="subtitle">Here are a few projects We've worked on.</p>
+                  <div class="project-grid">
+                    <div class="columns is-multiline is-mobile" id="project-grid-columns"></div>
+                    <div class="columns is-centered">
+                      <div class="column">
+                        <a class="button is-danger is-outlined is-rounded is-medium" href="https://cm-tech.github.io/portfolio" target="_blank"
+                          ><span>See more on CM-Tech</span></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="src/index.ts"></script>
+  </body>
 </html>

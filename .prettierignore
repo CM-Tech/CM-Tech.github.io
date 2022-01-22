@@ -1,0 +1,5 @@
+.cache
+dist/
+shaders/
+package-lock.json
+img/
