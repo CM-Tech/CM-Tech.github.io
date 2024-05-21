@@ -3,14 +3,16 @@
   font-family: "Arcon";
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 $family-sans-serif: "Work Sans";
 $red: #ff4e21;
 $yellow: #ffc621;
 $text-strong: #000000;
 $text: #000000;
-@import "../node_modules/bulma/bulma.sass";
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+@import "../node_modules/bulma/css/versions/bulma-no-dark-mode.min.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
 html {
   font-family: "Work Sans", sans-serif;
@@ -78,49 +80,6 @@ span.gold {
   max-width: 900px;
   box-sizing: border-box;
   transition: box-shadow 1s;
-}
-
-.section.skills {
-  width: 100%;
-  .box {
-    height: 100%;
-    .content .columns {
-      .column ul {
-        list-style: none;
-        margin-left: 0;
-        margin-top: 0;
-      }
-    }
-  }
-}
-
-.section.skills {
-  .column {
-    &:nth-child(1) {
-      .box {
-        background: linear-gradient(45deg, $blue, $purple);
-      }
-    }
-    &:nth-child(2) {
-      .box {
-        background: linear-gradient(45deg, $purple, $red);
-      }
-    }
-    &:nth-child(3) {
-      .box {
-        background: linear-gradient(45deg, $red, mix($red, $yellow));
-      }
-    }
-    &:nth-child(4) {
-      .box {
-        background: linear-gradient(45deg, mix($red, $yellow), $yellow);
-      }
-    }
-  }
-}
-
-.section.skills .box .content .columns {
-  flex-wrap: wrap;
 }
 
 .projects .project-grid figure {
